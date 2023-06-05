@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Realty</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        select {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>&nbsp;</h1> <!-- Add an empty h1 for spacing -->
+    <h1>Delete Realty</h1>
+    <form method="post" action="/delete">
+        <input type="hidden" name="step" value="delete_realty">
+        <label for="postid">Realty ID:</label>
+        <select name="postid" id="postid">
+            {% for realty in realties %}
+            <option value="{{ realty.id }}">{{ realty.id }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Delete">
+    </form>
+    <p class="back-link"><a href="{{ url_for('homepage') }}">Back to homepage</a></p>
+</body>
+</html>

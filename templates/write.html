@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add an Entry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            width: 300px;
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .success-message {
+            color: green;
+            margin-top: 20px;
+        }
+
+        .back-link {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add an Entry</h1>
+    {% if step=="compose_realty" %}
+        <form action="{{ url_for('write') }}" method="post">
+            <label for="type">Type:</label>
+            <input type="text" id="type" name="type"><br>
+            <label for="mark">Mark:</label>
+            <input type="text" id="mark" name="mark"><br>
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price"><br>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br>
+            <label for="surname">Surname:</label>
+            <input type="text" id="surname" name="surname"><br>
+            <label for="number">Number:</label>
+            <input type="text" id="number" name="number"><br>
+            <label for="reservation_date">Reservation Date:</label>
+            <input type="text" id="reservation_date" name="reservation_date"><br>
+            <input type="hidden" name="step" value="add_realty">
+            <input type="submit" value="Submit">
+        </form>
+    {% elif step == "add_realty" %}
+        <p class="success-message">Your realty has been added successfully.</p>
+        <p class="back-link"><a href="{{ url_for('homepage') }}">Back to homepage</a></p>
+    {% endif %}
+</body>
+</html>
